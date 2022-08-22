@@ -1,16 +1,15 @@
-import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server";
+import { ApolloGateway } from "@apollo/gateway";
 
-// import resolvers
-import { resolvers } from "./_main-resolvers/resolvers";
+const supergraphSdl = ''; // TODO!
 
-// import schema
-import { typeDefs } from "./_main-graphql/schema.graphql";
+const gateway = new ApolloGateway({
+  supergraphSdl
+});
 
-export const prisma = new PrismaClient();
-
-// instantiate the apollo server
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  gateway,
+});
 
 // start the graphql server
 server.listen().then(({ url }) => {
