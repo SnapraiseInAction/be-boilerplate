@@ -1,1 +1,1 @@
-# be-boilerplate
+# be-boilerplate with apollo federation
